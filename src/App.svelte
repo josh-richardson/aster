@@ -3,11 +3,13 @@
     import '../node_modules/materialize-css/dist/js/materialize.min.js';
     import Navbar from "./components/Navbar.svelte";
 
+
     import Home from "./routes/Home.svelte"
     import About from "./routes/About.svelte"
     import Login from './routes/Login.svelte'
     import Router from 'svelte-spa-router'
 
+    document.title = "Aster - Decentralized Crowdfunding!";
 
     const routes = {
         '/': Home,
@@ -27,5 +29,8 @@
 </style>
 
 <Navbar />
-<Router {routes} />
+<div class="container">
+    <Router {routes} />
+</div>
+
 
