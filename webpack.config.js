@@ -51,7 +51,8 @@ module.exports = {
 			filename: '[name].css'
 		})
 	],
-	devtool: prod ? false: 'source-map', devServer: {
+	devtool: prod ? false: 'source-map',
+	devServer: {
 		disableHostCheck: true
 	}
 };
