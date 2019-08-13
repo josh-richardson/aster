@@ -7,7 +7,9 @@
     import Home from "./routes/Home.svelte"
     import About from "./routes/About.svelte"
     import Login from './routes/Login.svelte'
+    import NewCampaign from './routes/NewCampaign.svelte'
     import Router from 'svelte-spa-router'
+
 
     document.title = "Aster - Decentralized Crowdfunding!";
 
@@ -15,6 +17,7 @@
         '/': Home,
         "/about": About,
         "/login": Login,
+        "/new": NewCampaign
     };
     export let url = "";
 

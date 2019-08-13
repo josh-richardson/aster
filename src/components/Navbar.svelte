@@ -52,6 +52,7 @@
         <li><a href="/" use:link use:active>Home</a></li>
         <li><a href="/about" use:link use:active>About</a></li>
         {#if $profile}
+            <li><a href="/new" use:link use:active>New Campaign</a></li>
             <li><a href="/profile" use:link use:active>Profile</a></li>
         {:else}
             <li><a href="/login" use:link use:active>Log In</a></li>
@@ -61,6 +62,7 @@
         <li><a href="/" use:link use:active>Home</a></li>
         <li><a href="/about" use:link use:active>About</a></li>
         {#if $profile}
+            <li><a href="/new" use:link use:active>New Campaign</a></li>
             <li><a href="/profile" use:link use:active>Profile</a></li>
         {:else}
             <li><a href="/login" use:link use:active>Log In</a></li>
