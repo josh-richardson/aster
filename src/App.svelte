@@ -42,6 +42,7 @@
     :global(.user-icon) {
         border-radius: 50%;
         border: 1px solid rgba(0,0,0, 0.3);
+        min-width: 30px;
     }
 
 </style>

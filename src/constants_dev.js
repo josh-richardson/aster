@@ -14,25 +14,20 @@ export const devCampaigns = [
 ];
 
 
-export const donations = [
+export const devDonations = [
     {
-        from: "0xSomeAddress",
-        amount: 5,
+        from: "0x07cfc12804949255d561b500111ed9ffe2319bb9",
+        amount: 6,
         comment: "Looks like a great cause!"
     },
     {
-        from: "0xSomeAddress",
-        amount: 5,
-        comment: "Looks like a great cause!"
+        from: "0x686b30a80826340a59afa564c2a01b79128eb7dd",
+        amount: 12,
+        comment: "I support dogs everywhere!"
     },
     {
-        from: "0xSomeAddress",
-        amount: 5,
-        comment: "Looks like a great cause!"
-    },
-    {
-        from: "0xSomeAddress",
-        amount: 5,
-        comment: "Looks like a great cause!"
+        from: "0x3b8a1122316a9520b4ffe867f56a130c1524a64f",
+        amount: 13.5,
+        comment: "Get that dog some food!"
     }
 ];
