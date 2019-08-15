@@ -4,20 +4,22 @@
     import Navbar from "./components/Navbar.svelte";
 
 
-    import Home from "./routes/Home.svelte"
+    import Campaigns from "./routes/Campaigns.svelte"
     import About from "./routes/About.svelte"
     import Login from './routes/Login.svelte'
     import NewCampaign from './routes/NewCampaign.svelte'
+    import Campaign from './routes/Campaign.svelte'
     import Router from 'svelte-spa-router'
 
 
     document.title = "Aster - Decentralized Crowdfunding!";
 
     const routes = {
-        '/': Home,
+        '/': Campaigns,
         "/about": About,
         "/login": Login,
-        "/new": NewCampaign
+        "/new": NewCampaign,
+        "/campaign/:id": Campaign
     };
     export let url = "";
 

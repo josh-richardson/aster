@@ -49,7 +49,7 @@
          alt="logo"/>
     <a id="logo-container" href="#!" class="brand-logo">Aster</a>
     <ul class="right hide-on-med-and-down">
-        <li><a href="/" use:link use:active>Home</a></li>
+        <li><a href="/" use:link use:active>Campaigns</a></li>
         <li><a href="/about" use:link use:active>About</a></li>
         {#if $profile}
             <li><a href="/new" use:link use:active>New Campaign</a></li>
@@ -59,7 +59,7 @@
         {/if}
     </ul>
     <ul id="nav-mobile" class="sidenav">
-        <li><a href="/" use:link use:active>Home</a></li>
+        <li><a href="/" use:link use:active>Campaigns</a></li>
         <li><a href="/about" use:link use:active>About</a></li>
         {#if $profile}
             <li><a href="/new" use:link use:active>New Campaign</a></li>
