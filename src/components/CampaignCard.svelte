@@ -1,6 +1,15 @@
+
+<script>
+
+    export let campaign;
+    import {link} from 'svelte-spa-router'
+</script>
+
+
 <style>
     .card {
         max-width: 300px;
+        width: 300px;
         margin-left: 10px;
         margin-right: 10px;
     }
@@ -12,18 +21,37 @@
     .card img {
         height: 200px;
     }
+
+    .card-link {
+        text-decoration: none;
+        color: black;
+    }
+
+    .card-action {
+        display: flex;
+    }
+
+    .card-action > p {
+        display: block;
+        margin: auto 0 auto 10px;
+    }
+
+
+
 </style>
 
-<div class="card">
-    <div class="card-image">
-        <img src="https://source.unsplash.com/random/300x{(Math.random() * 100).toFixed(0)}">
-        <span class="card-title">Card Title</span>
+<a use:link class="card-link" href="/campaign/{campaign.id}">
+    <div class="card">
+        <div class="card-image">
+            <img src="data:image/png;base64,{campaign.thumb}" alt="campaign main image">
+            <span class="card-title">{campaign.title}</span>
+        </div>
+        <div class="card-content">
+            <p>{campaign.tagline}</p>
+        </div>
+        <div class="card-action">
+            <svg class="user-icon" width="40" height="40" data-jdenticon-value={campaign.raiser} />
+            <p>{campaign.username}</p>
+        </div>
     </div>
-    <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
-    </div>
-    <div class="card-action">
-        <a href="#">This is a link</a>
-    </div>
-</div>
+</a>

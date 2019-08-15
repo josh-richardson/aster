@@ -2,7 +2,7 @@
     import "../node_modules/materialize-css/dist/css/materialize.min.css";
     import '../node_modules/materialize-css/dist/js/materialize.min.js';
     import Navbar from "./components/Navbar.svelte";
-
+    import {campaigns} from './stores/application';
 
     import Campaigns from "./routes/Campaigns.svelte"
     import About from "./routes/About.svelte"
@@ -10,6 +10,13 @@
     import NewCampaign from './routes/NewCampaign.svelte'
     import Campaign from './routes/Campaign.svelte'
     import Router from 'svelte-spa-router'
+    import {devCampaigns} from './constants_dev';
+
+    import {onMount} from 'svelte';
+
+    onMount(async () => {
+        campaigns.set(devCampaigns);
+    });
 
 
     document.title = "Aster - Decentralized Crowdfunding!";
@@ -31,6 +38,12 @@
         margin: 0;
         padding: 0;
     }
+
+    :global(.user-icon) {
+        border-radius: 50%;
+        border: 1px solid rgba(0,0,0, 0.3);
+    }
+
 </style>
 
 <Navbar />

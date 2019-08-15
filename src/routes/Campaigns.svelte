@@ -7,7 +7,7 @@
     onMount(async () => {
         console.log($profile);
         console.log($web3);
-        campaigns.set([1, 2, 3, 4])
+
     });
 
 
@@ -26,8 +26,7 @@
 </style>
 
 <h1>Campaigns</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, eaque fugit in incidunt, laboriosam nesciunt quae
-    quam qui recusandae reprehenderit, rerum velit? Accusamus debitis dolorem fuga, nam odio perferendis ullam.</p>
+<p>Below is a list of campaigns by Aster users. Click on a campaign for more information, and to donate.</p>
 
 
 <div class="campaigns-container">

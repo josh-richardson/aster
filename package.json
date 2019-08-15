@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "arweave": "^1.4.1",
+    "jdenticon": "^2.2.0",
     "svelte-routing": "^1.2.1",
     "svelte-spa-router": "^1.2.0",
     "web3": "^1.2.1"
