@@ -32,7 +32,7 @@ contract Campaign {
     uint public currentStage = 1;
 
     event FundingReceived(address contributor, uint amount, uint currentTotal);
-    event CreatorPaid(address recipient);
+    event CreatorPaidStage(address recipient);
 
     modifier inState(State _state) {
         require(state == _state);
@@ -78,7 +78,7 @@ contract Campaign {
 
     function checkFunded() public {
         if (currentBalance >= goal) {
-            balancePerStage = currentBalance / stages;
+            balancePerStage = currentBalance.div(stages);
             state = State.Funded;
         } else if (now > raiseBy)  {
             state = State.Failed;
@@ -88,24 +88,32 @@ contract Campaign {
 
 
     function vote() external inState(State.Funded) {
+        if (now > successBy) {
+            state = State.Failed;
+            revert();
+        }
         require(msg.sender != creator);
         require(contributions[msg.sender] > 0);
         require(votes[msg.sender] != currentStage);
+
         votes[msg.sender] = currentStage;
         agrees += 1;
         if (agrees >= totalContributions / 2) {
             agrees = 0;
-            currentStage += 1;
             payStage();
+            if (currentStage == stages) {
+                state = State.Successful;
+            } else {
+                currentStage += 1;
+            }
         }
     }
-
 
     function payStage() internal inState(State.Funded) returns (bool) {
         uint256 totalRaised = currentBalance;
         currentBalance = currentBalance.sub(balancePerStage);
         if (creator.send(balancePerStage)) {
-            emit CreatorPaid(creator);
+            emit CreatorPaidStage(creator);
             return true;
         } else {
             currentBalance = totalRaised;
@@ -116,10 +124,14 @@ contract Campaign {
 
     function getRefund() public inState(State.Failed) returns (bool) {
         require(contributions[msg.sender] > 0);
+        uint256 amountToRefund;
+        if (currentStage == 1) {
+            amountToRefund = contributions[msg.sender];
+        } else {
+            amountToRefund = contributions[msg.sender] - (stages / currentStage * contributions[msg.sender]);
+        }
 
-        uint amountToRefund = contributions[msg.sender];
         contributions[msg.sender] = 0;
-
         if (!msg.sender.send(amountToRefund)) {
             contributions[msg.sender] = amountToRefund;
             return false;
@@ -130,12 +142,15 @@ contract Campaign {
         return true;
     }
 
-    function getProperties() public view returns
+
+
+    function getProperties() external view returns
     (
         address payable _creator,
         string memory _title,
         string memory _description,
         uint256 _stages,
+        uint256 _currentStage,
         uint256 _raiseBy,
         uint256 _successBy,
         State _state,
@@ -146,6 +161,7 @@ contract Campaign {
         _title = title;
         _description = description;
         _stages = stages;
+        _currentStage = currentStage;
         _raiseBy = raiseBy;
         _successBy = successBy;
         _state = state;
