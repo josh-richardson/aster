@@ -29,7 +29,6 @@
                 validatedFile = false;
             }
         };
-        console.log(e);
         reader.readAsBinaryString(e.detail);
     };
 

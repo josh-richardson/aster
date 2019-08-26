@@ -1,6 +1,7 @@
 <script>
     import "../node_modules/materialize-css/dist/css/materialize.min.css";
-    import '../node_modules/materialize-css/dist/js/materialize.min.js';
+    import * as M from 'materialize-css/dist/js/materialize';
+
     import Navbar from "./components/Navbar.svelte";
     import {campaigns} from './stores/application';
 
@@ -15,6 +16,7 @@
     import {onMount} from 'svelte';
 
     onMount(async () => {
+        M.AutoInit();
         campaigns.set(devCampaigns);
     });
 
@@ -41,15 +43,15 @@
 
     :global(.user-icon) {
         border-radius: 50%;
-        border: 1px solid rgba(0,0,0, 0.3);
+        border: 1px solid rgba(0, 0, 0, 0.3);
         min-width: 30px;
     }
 
 </style>
 
-<Navbar />
+<Navbar/>
 <div class="container">
-    <Router {routes} />
+    <Router {routes}/>
 </div>
 
 

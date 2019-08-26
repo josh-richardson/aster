@@ -19,7 +19,7 @@ module.exports = {
         ),
       network_id: 3,
       gas: 5500000,
-      confirmations: 1,
+      confirmations: 0,
       timeoutBlocks: 50,
       skipDryRun: true
     }
@@ -28,5 +28,8 @@ module.exports = {
     solc: {
       version: "0.5.8"
     }
+  },
+  mocha: {
+    enableTimeouts: false
   }
 };

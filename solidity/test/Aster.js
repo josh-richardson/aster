@@ -11,7 +11,7 @@ let campaignTitle = "Dog food";
 let campaignDescription = "Give me the dog food!";
 
 contract("Aster create", accounts => {
-  let aster;
+  let aster;npm run
 
   before(async () => {
     aster = await Aster.deployed();
@@ -170,7 +170,6 @@ contract("Campaign (raised and partially refunded)", accounts => {
 });
 /*
  * Other tests are needed for:
- * - Raised but not enough votes in given time and thus timed out, and thus refunded.
  * - Failed to raise and thus refunded.
  * - All possible state transitions
  *
