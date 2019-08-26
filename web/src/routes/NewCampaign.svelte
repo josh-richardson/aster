@@ -10,9 +10,7 @@
         }
     ];
 
-
-    $: formState = {
-        stages: stages,
+    let formState = {
         campaignName: "",
         tagline: "",
         description: "",
@@ -23,15 +21,23 @@
         location: ""
     };
 
-    const newStageClick = () => stages = [...stages, {number: ++currentStage, name: "", description: ""}];
+    const newStageClick = () => {
+        return stages = [...stages, {number: ++currentStage, name: "", description: ""}];
+    };
+    const deleteItem = e => {
+        stages = stages.filter(s => s.number !== e.detail);
+        currentStage--;
+    };
 
-    const deleteItem = e => stages = stages.filter(s => s.number !== e.detail);
+    const createButtonClicked = () => {
+        console.log(formState);
+        console.log(stages);
+    }
 
 </script>
 
 
 <style>
-
     .correct {
         font-size: 2.75em;
     }
@@ -105,7 +111,7 @@
         completed by the time the delivery period you specified previously has elapsed.</p>
 
     {#each stages as stage}
-        <FundingStage stage={stage} on:delete={deleteItem}></FundingStage>
+        <FundingStage stage={stage} on:delete={deleteItem} last={stage===stages.slice(-1)[0]}></FundingStage>
     {/each}
     <button class="btn btn-floating btn-large waves-effect waves-light green darken-2 right"
             on:click={newStageClick}><span
@@ -113,5 +119,5 @@
 </div>
 
 <div class="row">
-    <button class="btn right waves-effect waves-light green darken-2">Create Campaign!</button>
+    <button class="btn right waves-effect waves-light green darken-2" on:click={createButtonClicked}>Create Campaign!</button>
 </div>

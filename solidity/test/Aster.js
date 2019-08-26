@@ -11,7 +11,7 @@ let campaignTitle = "Dog food";
 let campaignDescription = "Give me the dog food!";
 
 contract("Aster create", accounts => {
-  let aster;npm run
+  let aster;
 
   before(async () => {
     aster = await Aster.deployed();

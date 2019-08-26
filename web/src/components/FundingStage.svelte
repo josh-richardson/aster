@@ -1,12 +1,14 @@
 <script>
     import * as helpers from "../helpers";
     import {createEventDispatcher} from "svelte";
+
     let dispatch = createEventDispatcher();
 
     let dispatchDelete = () => dispatch("delete", stage.number);
 
     export let stage = {};
     export let removeItem = {};
+    export let last = false;
 </script>
 
 
@@ -20,16 +22,25 @@
         overflow: hidden;
     }
 
-    .remove-link {
+    .remove-button {
         position: absolute;
         transform: translateX(-100%);
+        background: none !important;
+        border: none;
+        color: #039be5;
+        padding: 0 !important;
+        cursor: pointer;
+    }
+
+    .remove-button:hover {
+        text-decoration: underline;
     }
 </style>
 
 
 <div class="stage">
-    {#if stage.number !== 1}
-    <a href="!" class="right remove-link" on:click={dispatchDelete}>Remove</a>
+    {#if stage.number !== 1 && last}
+        <button role="link" class="right remove-button" on:click={dispatchDelete}>Remove</button>
     {/if}
 
     <div class="input-field col l4 s12">
@@ -39,7 +50,8 @@
     </div>
     <div class="input-field col l8 s12">
         <input id="stageDescription-{stage.number}" type="text" class="validate" bind:value={stage.description}>
-        <label for="stageDescription-{stage.number}">{helpers.getNumberWithOrdinal(stage.number)} stage description</label>
+        <label for="stageDescription-{stage.number}">{helpers.getNumberWithOrdinal(stage.number)} stage
+            description</label>
         <span class="helper-text">A one-sentence description of this delivery stage</span>
     </div>
 </div>

@@ -1,2 +1,2 @@
 *.sol linguist-language=Solidity
-*.svelte linguist-language=Svelte
+*.svelte linguist-language=JavaScript
