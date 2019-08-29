@@ -1,4 +1,5 @@
 import Arweave from "arweave/web";
+import Web3 from "web3";
 export const VERSION = 2;
 
 export const arweave = Arweave.init({
@@ -9,6 +10,9 @@ export const arweave = Arweave.init({
     port: 443,
     protocol: "https"
 });
+
+
+
 
 export const ASTER_ADDRESS = "0xF5995605f0a047997E03c73800D3a0F6a09C1B1d";
 
@@ -104,7 +108,6 @@ export const ASTER_ABI = [
         "type": "function"
     }
 ];
-
 
 export const CAMPAIGN_ABI = [
     {
@@ -502,3 +505,4 @@ export const CAMPAIGN_ABI = [
         "type": "function"
     }
 ];
+

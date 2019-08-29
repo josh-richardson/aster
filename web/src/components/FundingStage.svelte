@@ -1,14 +1,18 @@
 <script>
     import * as helpers from "../helpers";
     import {createEventDispatcher} from "svelte";
+    import {sample} from "lodash";
 
     let dispatch = createEventDispatcher();
-
     let dispatchDelete = () => dispatch("delete", stage.number);
+
+    let potentialStageNames = ["fabrication", "production", "shipping", "material acquisition"];
 
     export let stage = {};
     export let removeItem = {};
     export let last = false;
+
+    $: stageWithOrdinal = helpers.getNumberWithOrdinal(stage.number);
 </script>
 
 
@@ -45,13 +49,13 @@
 
     <div class="input-field col l4 s12">
         <input id="stageName-{stage.number}" type="text" class="validate" bind:value={stage.name}>
-        <label for="stageName-{stage.number}">{helpers.getNumberWithOrdinal(stage.number)} stage name</label>
-        <span class="helper-text">A name for this stage (e.g: Shipping)</span>
+        <label for="stageName-{stage.number}">{stageWithOrdinal} stage name</label>
+        <span class="helper-text">A name for the {stageWithOrdinal} stage (e.g: {sample(potentialStageNames)})</span>
     </div>
     <div class="input-field col l8 s12">
         <input id="stageDescription-{stage.number}" type="text" class="validate" bind:value={stage.description}>
-        <label for="stageDescription-{stage.number}">{helpers.getNumberWithOrdinal(stage.number)} stage
+        <label for="stageDescription-{stage.number}">{stageWithOrdinal} stage
             description</label>
-        <span class="helper-text">A one-sentence description of this delivery stage</span>
+        <span class="helper-text">A one-sentence description of the {stageWithOrdinal} delivery stage</span>
     </div>
 </div>

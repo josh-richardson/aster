@@ -1,17 +1,13 @@
 <script>
-    import {profile, web3} from '../stores/user';
+    import {profile, web3, asterContract} from '../stores/user';
     import {campaigns} from '../stores/application';
     import {onMount} from 'svelte';
     import CampaignCard from "../components/CampaignCard.svelte";
 
     onMount(async () => {
         console.log($profile);
-        console.log($web3);
-
+        console.log($asterContract);
     });
-
-
-
 </script>
 
 <style>

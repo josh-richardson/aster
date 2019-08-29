@@ -1,6 +1,6 @@
 <script>
     import FundingStage from "../components/FundingStage.svelte";
-
+    import asterContract from "../constants";
     let currentStage = 1;
     let stages = [
         {
@@ -30,8 +30,7 @@
     };
 
     const createButtonClicked = () => {
-        console.log(formState);
-        console.log(stages);
+        console.log(asterContract);
     }
 
 </script>
@@ -67,8 +66,8 @@
 
     <div class="input-field col l12 s12">
         <textarea id="description" class="materialize-textarea" bind:value={formState.description}></textarea>
-        <label for="description">Description</label>
-        <span class="helper-text">A longer description of your campaign. It should contain all the necessary information to communicate</span>
+        <label for="description">Description (multiline)</label>
+        <span class="helper-text">A longer description of your campaign. It should contain all the necessary information to communicate your roadmap and vision.</span>
     </div>
 
     <div class="input-field col l12 s12">
